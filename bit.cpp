@@ -23,14 +23,13 @@ void update(int id, int val) {
 
 int main() {
 	int n; cin >> n;
- 
+
 	for (int i = 0; i < n; i++) {
 		int a, b; cin >> a >> b;
 		update(a, b);
 	}	
 
 	cout << query(4) << endl;
-
 
 	return 0;
 }

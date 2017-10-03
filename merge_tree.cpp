@@ -24,8 +24,7 @@ int query(int r, int i, int j) {
 	if (i >= a and j <= b) {
 		int ret = seg[r].size() - (upper_bound(seg[r].begin(), seg[r].end(), k) - seg[r].begin());
 		return ret;
-	}
-	else {
+	} else {
 		int mi = (i+j)/2;
 		int L = query(2*r, i, mi);
 		int R = query(2*r+1, mi+1, j);

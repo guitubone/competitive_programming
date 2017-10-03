@@ -1,6 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-
+//Recursive
 const int N = 100001;
 int seg[4*N], v[N];
 int a, b;
@@ -37,7 +35,39 @@ void update(int r, int i, int j, int pos, int val) {
     }
 }
 
-int main(void) {
+//Iterative
+const int N = 1e5;
+int n;
+int t[2 * N];
 
-    return 0;
+void build() {
+  for (int i = n - 1; i > 0; --i) t[i] = t[i<<1] + t[i<<1|1];
+}
+
+//Range Query and Point Update
+void modify(int p, int value) {
+  for (t[p += n] = value; p > 1; p >>= 1) t[p>>1] = t[p] + t[p^1];
+}
+
+int query(int l, int r) {  // sum on interval [l, r)
+  int res = 0;
+  for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+    if (l&1) res += t[l++];
+    if (r&1) res += t[--r];
+  }
+  return res;
+}
+
+//Range Update and Point Query
+void modify(int l, int r, int value) {
+  for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+    if (l&1) t[l++] += value;
+    if (r&1) t[--r] += value;
+  }
+}
+
+int query(int p) {
+  int res = 0;
+  for (p += n; p > 0; p >>= 1) res += t[p];
+  return res;
 }

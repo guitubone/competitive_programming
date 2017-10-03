@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5;
+const int N = 112345;
 int vis[N];
 vector <int> g[N];
 vector <int> w[N];
@@ -30,7 +30,6 @@ void dijkstra(int beg) {
 			}
 		}
 	}
-
 }
 
 int main(void) {
