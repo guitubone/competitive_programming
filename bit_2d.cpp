@@ -1,56 +1,30 @@
 #include <bits/stdc++.h>
-#define N 500
 using namespace std;
 
-const int max_x = N;
-const int max_y = N;
-int bit[N][N];
+const int N = 2501;
+ll bit[N][N];
 
-void update_y(int x, int y, int value){
-    while(y <= max_y){
-        bit[x][y] += value;
-        y += y & -y;
-    }
+void update(int x, int y, ll val) {
+	for (int i = x; i <= n; i += i & -i) {
+		for (int j = y; j <= m; j += j & -j) {
+			bit[i][j] += val;
+		}
+	}
 }
 
-void update(int x, int y, int value){
-    while(x <= max_x){
-        update_y(x, y, value); 
-        x += x & -x;
-    }
-}
+ll query(int x, int y) {
+	ll ret = 0;
 
-int query_y(int x, int y){
-    int sum = 0;
-    while(y > 0){
-        sum += bit[x][y];
-        y -= y & -y;
-    }
-    return sum;
-}
+	for (int i = x; i > 0; i -= i & -i) {
+		for (int j = y; j > 0; j -= j & -j) {
+			ret += bit[i][j];
+		}
+	}
 
-int query(int x, int y){
-    int sum = 0;
-    while(x > 0){
-        sum += query_y(x, y);
-        x -= x & -x;
-    }
-    return sum;
+	return ret;
 }
 
 int main(void){
-    int n, q;
-    cin >> n >> q;
-    for(int i = 1; i <= n; i++){
-        for(int j = 1; j <= n; j++){
-            int p;
-            cin >> p;
-            update(i, j, p);
-        }
-    }
-   for(int i = 0; i < q; i++){
-        int x, y;
-        cin >> x >> y;
-        cout << query(x, y) << endl;
-   } 
+
+	return 0;
 }

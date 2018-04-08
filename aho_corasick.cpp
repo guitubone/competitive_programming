@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXS = 6 * 50 + 10; //Sum of the lenght of all keywords
+const int MAXS = 112345; //Sum of the lenght of all keywords
 const int MAXC = 26; //Max chars in alphabet
 
 int out[MAXS]; 
@@ -99,3 +99,35 @@ int findNextState(int currentState, char nextInput,
 //        }
 //    }
 // }
+
+int main() {
+	string text;
+	vector<string> keywords;
+
+	cin >> text;
+
+	string s;
+	while (cin >> s) {
+		keywords.emplace_back(s);
+	}
+
+	buildMatchingMachine(keywords, 'a', 'z');
+	int currentState = 0;
+	for (int i = 0; i < text.size(); ++i) {
+	currentState = findNextState(currentState, text[i], 'a');
+
+	if (out[currentState] == 0) continue;
+		for (int j = 0; j < keywords.size(); ++j) {
+			if (out[currentState] & (1 << j)) {
+
+				cout << "Keyword " << keywords[j]
+					 << " appears from "
+					 << i - keywords[j].size() + 1
+					 << " to " << i << endl;
+					 
+			}
+		}
+	}
+
+	return 0;
+}

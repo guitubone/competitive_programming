@@ -36,6 +36,8 @@ void update(int r, int i, int j, int pos, int val) {
 }
 
 //Iterative
+// Ler t[i+n] para vetor inicial depois dar build
+
 const int N = 1e5;
 int n;
 int t[2 * N];

@@ -1,4 +1,6 @@
 /*
+github.com/LoppA/RepGod
+
 n >= k
 T(n) = a1*T(n-1) + a2*T(n-2) + ... + ak*T(n-k)
  _  _     _   (n-(k-1)) _  _   
