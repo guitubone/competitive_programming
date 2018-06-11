@@ -4,7 +4,6 @@ using namespace std;
 #define emp emplace
 #define fi first
 #define se second
-#define INF 0x3f3f3f3f
 typedef long long ll;
 typedef pair<int, int> ii;
 
