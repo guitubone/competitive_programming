@@ -8,7 +8,7 @@ typedef long long ll;
 typedef pair<int, int> ii;
 
 int main(void) {
-	ios_base::sync_with_stdio(false);
+	ios_base::sync_with_stdio(false); cin.tie(0);
 
 	return 0;
 }
